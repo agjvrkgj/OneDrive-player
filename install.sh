@@ -176,6 +176,4 @@ case "${1:-}" in
             1) install ;;
             2) uninstall ;;
             *) echo "无效选项"; exit 1 ;;
-        esac
-        ;;
-esac\n        ;;\nesac
+        esac\n        ;;\nesac
