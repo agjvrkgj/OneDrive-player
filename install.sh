@@ -91,10 +91,10 @@ install() {
     # 3. 创建安装目录
     mkdir -p "${INSTALL_DIR}"
 
-    # 4. 复制应用文件
-    log_info "复制应用文件..."
-    cp "${PLAYER_APP_FILE}" "${INSTALL_DIR}/"
-    cp "onedrive-player.service" "${INSTALL_DIR}/"
+    # 4. 下载并复制应用文件
+    log_info "下载应用文件..."
+    curl -fsSL "${RAW_URL}/player_app.py" -o "${INSTALL_DIR}/player_app.py" || { log_error "下载 player_app.py 失败"; exit 1; }
+    curl -fsSL "${RAW_URL}/onedrive-player.service" -o "${INSTALL_DIR}/onedrive-player.service" || { log_error "下载 onedrive-player.service 失败"; exit 1; }
 
     # 5. 配置 Azure OneDrive
     setup_azure_onedrive
