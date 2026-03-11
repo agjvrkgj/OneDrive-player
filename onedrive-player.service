@@ -4,12 +4,12 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/soop-downloader
-ExecStart=/usr/bin/python3 /opt/soop-downloader/player_app.py
+WorkingDirectory=/opt/onedrive-player
+ExecStart=/usr/bin/python3 /opt/onedrive-player/player_app.py
 Restart=always
 RestartSec=5
 Environment=PYTHONUNBUFFERED=1
-Environment=AZURE_CONFIG=/opt/soop-downloader/azure_config.json
+Environment=AZURE_CONFIG=/opt/onedrive-player/azure_config.json
 Environment=ONEDRIVE_FOLDER=SOOP_VOD
 
 [Install]
