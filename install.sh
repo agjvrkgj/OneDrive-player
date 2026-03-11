@@ -157,23 +157,24 @@ uninstall() {
 
 # ── 入口 ──────────────────────────────────────────────────
 
-case "${1:-}" in
-    install)
-        install
-        ;;
-    uninstall|remove|delete)
-        uninstall
-        ;;
-    *)
-        print_banner
-        echo "请选择操作:"
-        echo ""
-        echo "  1) 安装 OneDrive Player"
-        echo "  2) 卸载 OneDrive Player"
-        echo ""
-        read -p "输入选项 [1/2]: " choice
-        case "$choice" in
-            1) install ;;
-            2) uninstall ;;
-            *) echo "无效选项"; exit 1 ;;
-        esac\n        ;;\nesac
+if [ -z "$1" ]; then
+    print_banner
+    echo "请选择操作:"
+    echo ""
+    echo "  1) 安装 OneDrive Player"
+    echo "  2) 卸载 OneDrive Player"
+    echo ""
+    read -p "输入选项 [1/2]: " choice
+    case "$choice" in
+        1) install ;;
+        2) uninstall ;;
+        *) echo "无效选项"; exit 1 ;;
+    esac
+elif [ "$1" = "install" ]; then
+    install
+elif [ "$1" = "uninstall" ] || [ "$1" = "remove" ] || [ "$1" = "delete" ]; then
+    uninstall
+else
+    echo "无效参数: $1"
+    exit 1
+fi
