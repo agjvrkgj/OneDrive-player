@@ -1,0 +1,16 @@
+[Unit]
+Description=SOOP OneDrive Video Player
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/soop-downloader
+ExecStart=/usr/bin/python3 /opt/soop-downloader/player_app.py
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+Environment=AZURE_CONFIG=/opt/soop-downloader/azure_config.json
+Environment=ONEDRIVE_FOLDER=SOOP_VOD
+
+[Install]
+WantedBy=multi-user.target
