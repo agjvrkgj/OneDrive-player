@@ -14,9 +14,9 @@ NC='\033[0m'
 INSTALL_DIR="/opt/onedrive-player"
 SERVICE_NAME="onedrive-player"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
-PLAYER_APP_FILE="player_app.py" # Assuming this script is in the same directory as player_app.py
+# PLAYER_APP_FILE="player_app.py" # This is now downloaded directly
 REPO_URL="https://github.com/agjvrkgj/OneDrive-player.git"
-RAW_URL="https://raw.githubusercontent.com/agjvrkgj/OneDrive-player/main"
+RAW_URL="https://raw.githubusercontent.com/agjvrkgj/OneDrive-player/main" # Base raw URL
 
 print_banner() {
     echo -e "${CYAN}"
@@ -158,24 +158,4 @@ uninstall() {
 # ── 入口 ──────────────────────────────────────────────────
 
 case "${1:-}" in
-    install)
-        install
-        ;;
-    uninstall|remove|delete)
-        uninstall
-        ;;
-    *)
-        print_banner
-        echo "请选择操作:"
-        echo ""
-        echo "  1) 安装 OneDrive Player"
-        echo "  2) 卸载 OneDrive Player"
-        echo ""
-        read -p "输入选项 [1/2]: " choice
-        case "$choice" in
-            1) install ;;
-            2) uninstall ;;
-            *) echo "无效选项"; exit 1 ;;
-        esac
-        ;;
-esac
+    install)\n        install\n        ;;\n    uninstall|remove|delete)\n        uninstall\n        ;;\n    *)\n        print_banner\n        echo \"请选择操作:\"\n        echo \"\"\n        echo \"  1) 安装 OneDrive Player\"\n        echo \"  2) 卸载 OneDrive Player\"\n        echo \"\"\n        read -p \"输入选项 [1/2]: \" choice\n        case \"$choice\" in\n            1) install ;;\n            2) uninstall ;;\n            *) echo \"无效选项\"; exit 1 ;;\n        esac\n        ;;\nesac
